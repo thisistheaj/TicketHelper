@@ -7,15 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TicketId</ion-title>
+    <ion-title>TicketHelper</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <button (click)="login()" ion-button>
-    Go
-  </button>
+  <form (submit)="submitId()" [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Ticket Id</ion-label>
+        <ion-input type="text" formControlName="ticketId"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" formControlName="lastName"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button type="submit" block ion-button>
+      Start
+    </button>
+  </form>
 
 </ion-content>
