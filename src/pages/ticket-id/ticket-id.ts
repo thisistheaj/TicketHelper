@@ -28,7 +28,7 @@ export class TicketIdPage {
               public ticketPvdr: TicketsProvider) {
     this.form = fb.group({
       ticketId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      lastName: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      lastName: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
     })
   }
 

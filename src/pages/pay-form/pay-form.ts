@@ -27,9 +27,4 @@ export class PayFormPage {
   public goToReciept() {
     this.navCtrl.push('receipt');
   }
-
-  public goToRegister() {
-    this.navCtrl.push('register');
-  }
-
 }

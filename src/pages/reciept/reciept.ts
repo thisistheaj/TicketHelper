@@ -24,4 +24,8 @@ export class RecieptPage {
     console.log('ionViewDidLoad RecieptPage');
   }
 
+  public goToRegister() {
+    this.navCtrl.push('register');
+  }
+
 }

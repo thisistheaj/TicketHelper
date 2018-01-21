@@ -20,13 +20,14 @@
 
 
 <ion-content padding>
-  <button ion-button (click)="gotToForm('pay')">
+  <h2>What would you like to do?</h2>
+  <button ion-button block (click)="gotToForm('pay')">
     Pay Fine
   </button>
-  <button ion-button (click)="gotToForm('dispute')">
+  <button ion-button block (click)="gotToForm('dispute')">
     Dispute Fine
   </button>
-  <button ion-button (click)="gotToForm('finance')">
+  <button ion-button block (click)="gotToForm('finance')">
     Financial Dispute
   </button>
 
