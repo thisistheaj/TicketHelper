@@ -18,7 +18,8 @@ export class TicketsProvider {
     const tid = this.uuidv4();
     return this.dbpvdr.getObject('tickets/' + tid).set({
       lastName: lastName,
-      ticketId: tid
+      ticketId: tid,
+      amount: amount
     });
   }
 
@@ -33,6 +34,10 @@ export class TicketsProvider {
         reject({message: 'No ticket found for this ID'});
       });
     })
+  }
+
+  public getTickets() {
+    return this.dbpvdr.getList('tickets').valueChanges();
   }
 
   public uuidv4() {

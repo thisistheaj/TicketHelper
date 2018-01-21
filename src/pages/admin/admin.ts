@@ -20,6 +20,7 @@ import {TicketsProvider} from "../../providers/tickets/tickets";
 export class AdminPage {
 
   public form: FormGroup;
+  public tickets;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, fb: FormBuilder, public ticketPvdr: TicketsProvider) {
     this.form = fb.group({
@@ -29,6 +30,7 @@ export class AdminPage {
   }
 
   ionViewDidLoad() {
+    this.tickets = this.ticketPvdr.getTickets();
     console.log('ionViewDidLoad AdminPage');
   }
 

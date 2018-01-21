@@ -29,5 +29,20 @@
       Add Ticket
     </button>
   </form>
+  <ion-list>
+    <ion-item-divider>
+      Tickets:
+    </ion-item-divider>
+    <span *ngFor="let ticket of tickets | async">
+      <ion-item>
+        <h2>{{ticket?.lastName}}</h2>
+        <p>{{ticket?.amount}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Id:</ion-label>
+        <ion-input contenteditable="false" [ngModel]="ticket?.ticketId"></ion-input>
+      </ion-item>
+    </span>
+  </ion-list>
 
 </ion-content>
