@@ -14,5 +14,22 @@
 
 
 <ion-content padding>
-
+  <form (submit)="goToReciept()">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Basis for Dispute:</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <input type="file" accept="image/*"/>
+      </ion-item>
+      <ion-item>
+        <ion-label>Available On:</ion-label>
+        <ion-datetime></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <button ion-button block type="submit">
+      Submit
+    </button>
+  </form>
 </ion-content>
