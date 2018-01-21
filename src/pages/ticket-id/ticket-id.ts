@@ -39,7 +39,7 @@ export class TicketIdPage {
         this.navCtrl.push(TabsPage);
       }).catch(err => alert(err.message));
     } else {
-      console.log('invalid field')
+      console.log('invalid field');
     }
   }
 
