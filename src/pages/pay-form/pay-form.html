@@ -14,8 +14,27 @@
 
 
 <ion-content padding>
-
-  <button ion-button block (click)="goToReciept()">
-    Done
-  </button>
+  <form (submit)="goToReciept()">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Credit Card #:</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Name on Card:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Security Code:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Expires On:</ion-label>
+        <ion-datetime></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <button ion-button block type="submit">
+      Done
+    </button>
+  </form>
 </ion-content>
