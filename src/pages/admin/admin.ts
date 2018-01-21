@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {TicketsProvider} from "../../providers/tickets/tickets";
 
 /**
  * Generated class for the AdminPage page.
@@ -17,11 +19,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AdminPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public form: FormGroup;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, fb: FormBuilder, public ticketPvdr: TicketsProvider) {
+    this.form = fb.group({
+      name: ['', Validators.required],
+      amount: ['', Validators.required]
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdminPage');
+  }
+
+  public addTicket() {
+    const name = this.form.get('name').value;
+    const amount = this.form.get('amount').value;
+    this.ticketPvdr.addTicket(name,amount)
+      .catch(err => alert(err.message))
   }
 
 }

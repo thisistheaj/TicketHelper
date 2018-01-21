@@ -14,5 +14,20 @@
 
 
 <ion-content padding>
+  <form (submit)="addTicket()" [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Amount</ion-label>
+        <ion-input type="text" formControlName="amount"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block type="submit" [disabled]="!form.valid">
+      Add Ticket
+    </button>
+  </form>
 
 </ion-content>
