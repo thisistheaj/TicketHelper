@@ -23,5 +23,4 @@ export class ProratedPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProratedPage');
   }
-
 }

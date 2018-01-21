@@ -25,4 +25,9 @@ export class ChoosePaymentPage {
   public gotToForm(name: string) {
     this.navCtrl.push(name);
   }
+
+  public goToLogin() {
+    this.navCtrl.push('login');
+  }
+
 }
