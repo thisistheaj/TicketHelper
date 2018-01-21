@@ -22,4 +22,7 @@ export class ChoosePaymentPage {
     console.log('ionViewDidLoad ChoosePaymentPage');
   }
 
+  public gotToForm(name: string) {
+    this.navCtrl.push(name);
+  }
 }

@@ -8,7 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name: 'dispute'
+})
 @Component({
   selector: 'page-dispute-form',
   templateUrl: 'dispute-form.html',

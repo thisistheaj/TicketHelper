@@ -8,7 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name: 'finance'
+})
 @Component({
   selector: 'page-finance-dispute-form',
   templateUrl: 'finance-dispute-form.html',
@@ -20,6 +22,10 @@ export class FinanceDisputeFormPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FinanceDisputeFormPage');
+  }
+
+  public goToProrated() {
+    this.navCtrl.push('prorated');
   }
 
 }
