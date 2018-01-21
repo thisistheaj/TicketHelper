@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TabsPage} from "../tabs/tabs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthProvider} from "../../providers/auth/auth";
 
 /**
  * Generated class for the TicketIdPage page.
@@ -19,7 +20,7 @@ export class TicketIdPage {
 
   public form: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fb: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fb: FormBuilder, public authPvdr: AuthProvider) {
     this.form = fb.group({
       ticketId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       lastName: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
@@ -34,7 +35,9 @@ export class TicketIdPage {
     console.log('id', this.form.get('ticketId').value);
     console.log('lastName', this.form.get('lastName').value);
     if(this.form.valid){
-      this.navCtrl.push(TabsPage);
+      this.authPvdr.loginAnonymously().then(uid => {
+        this.navCtrl.push(TabsPage);
+      }).catch(err => alert(err.message));
     } else {
       console.log('invalid field')
     }

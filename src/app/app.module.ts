@@ -10,6 +10,10 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {ChoosePaymentPage} from "../pages/choose-payment/choose-payment";
 import {HistoryPage} from "../pages/history/history";
 import {TicketIdPage} from "../pages/ticket-id/ticket-id";
+import {AngularFireModule} from "angularfire2";
+import { AuthProvider } from '../providers/auth/auth';
+import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
+import { DatabaseProvider } from '../providers/database/database';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,16 @@ import {TicketIdPage} from "../pages/ticket-id/ticket-id";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBbL-igADrmju-2ZjUWvSY-724geRuNF6U",
+      authDomain: "korus-website.firebaseapp.com",
+      databaseURL: "https://korus-website.firebaseio.com",
+      projectId: "korus-website",
+      storageBucket: "korus-website.appspot.com",
+      messagingSenderId: "10679451438"
+    }),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +47,10 @@ import {TicketIdPage} from "../pages/ticket-id/ticket-id";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider,
+    AngularFireAuth,
+    DatabaseProvider
   ]
 })
 export class AppModule {
