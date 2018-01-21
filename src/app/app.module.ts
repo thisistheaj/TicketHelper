@@ -15,6 +15,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
 import { DatabaseProvider } from '../providers/database/database';
 import { TicketsProvider } from '../providers/tickets/tickets';
+import {AngularFireDatabase} from "angularfire2/database";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { TicketsProvider } from '../providers/tickets/tickets';
     AuthProvider,
     AngularFireAuth,
     DatabaseProvider,
+    AngularFireDatabase,
     TicketsProvider
   ]
 })

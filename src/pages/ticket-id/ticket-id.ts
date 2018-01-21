@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TabsPage} from "../tabs/tabs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthProvider} from "../../providers/auth/auth";
+import {TicketsProvider} from "../../providers/tickets/tickets";
 
 /**
  * Generated class for the TicketIdPage page.
@@ -20,7 +21,13 @@ export class TicketIdPage {
 
   public form: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fb: FormBuilder, public authPvdr: AuthProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private fb: FormBuilder,
+    public authPvdr: AuthProvider,
+    public ticketPvdr: TicketsProvider
+  ) {
     this.form = fb.group({
       ticketId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       lastName: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
@@ -32,14 +39,15 @@ export class TicketIdPage {
   }
 
   public submitId() {
-    console.log('id', this.form.get('ticketId').value);
-    console.log('lastName', this.form.get('lastName').value);
+    const ticketId = this.form.get('ticketId').value;
+    const lastName = this.form.get('lastName').value;
     if(this.form.valid){
       this.authPvdr.loginAnonymously().then(uid => {
-        this.navCtrl.push(TabsPage);
+        this.ticketPvdr.claimTicket(uid, lastName, ticketId)
+          .then(data => {}).catch(err => alert(err.message));
       }).catch(err => alert(err.message));
     } else {
-      console.log('invalid field');
+      alert('invalid field');
     }
   }
 
