@@ -24,4 +24,12 @@ export class PayFormPage {
     console.log('ionViewDidLoad PayFormPage');
   }
 
+  public goToReciept() {
+    this.navCtrl.push('receipt');
+  }
+
+  public goToRegister() {
+    this.navCtrl.push('register');
+  }
+
 }
