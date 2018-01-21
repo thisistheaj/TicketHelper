@@ -40,7 +40,12 @@ export class TicketsProvider {
   }
 
   public connecttoTicket(uid: string, lastName: string, ticketId: string) {
-    return this.dbpvdr.getObject('tickets/' + ticketId).update({person: {id: ticketId, lastName: lastName}})
+    return this.dbpvdr.getObject('tickets/' + ticketId).update({
+      person: {
+        id: ticketId,
+        lastName: lastName
+      }
+    });
   }
 
   public getTickets() {
@@ -48,6 +53,16 @@ export class TicketsProvider {
   }
   public getTicketId() {
     return this.ticketId;
+  }
+
+  public submitDispute(description: string, date: string, imageUrl: string) {
+    return this.dbpvdr.getObject('tickets/' + this.ticketId).update({
+      dispute: {
+        description: description,
+        date: date,
+        imageUrl: imageUrl
+      }
+    });
   }
 
   public uuidv4() {

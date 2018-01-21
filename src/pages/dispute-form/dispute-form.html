@@ -14,18 +14,18 @@
 
 
 <ion-content padding>
-  <form (submit)="goToReciept()">
+  <form (submit)="handleSubmit()" [formGroup]="form">
     <ion-list>
       <ion-item>
         <ion-label stacked>Basis for Dispute:</ion-label>
-        <ion-textarea></ion-textarea>
+        <ion-textarea formControlName="description"></ion-textarea>
       </ion-item>
       <ion-item>
-        <input type="file" accept="image/*"/>
+        <input type="file" (change)="fileChanged($event)" accept="image/*"/>
       </ion-item>
       <ion-item>
         <ion-label>Available On:</ion-label>
-        <ion-datetime></ion-datetime>
+        <ion-datetime formControlName="date"></ion-datetime>
       </ion-item>
     </ion-list>
     <button ion-button block type="submit">
