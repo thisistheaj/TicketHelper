@@ -10,6 +10,8 @@ import {DatabaseProvider} from "../database/database";
 @Injectable()
 export class TicketsProvider {
 
+  public ticketId;
+
   constructor(public dbpvdr: DatabaseProvider) {
     console.log('Hello TicketsProvider Provider');
   }
@@ -29,6 +31,7 @@ export class TicketsProvider {
       this.dbpvdr.getObject('tickets/' + ticketId).valueChanges().subscribe(data => {
         console.log('d', data);
         if (data) {
+          this.ticketId = ticketId;
           resolve(data);
         }
         reject({message: 'No ticket found for this ID'});
@@ -42,6 +45,9 @@ export class TicketsProvider {
 
   public getTickets() {
     return this.dbpvdr.getList('tickets').valueChanges();
+  }
+  public getTicketId() {
+    return this.ticketId;
   }
 
   public uuidv4() {

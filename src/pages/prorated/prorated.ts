@@ -23,4 +23,8 @@ export class ProratedPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProratedPage');
   }
+
+  public goToPay() {
+    this.navCtrl.push('pay');
+  }
 }
