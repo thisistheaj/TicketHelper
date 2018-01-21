@@ -41,9 +41,10 @@ export class TicketIdPage {
     const lastName = this.form.get('lastName').value;
     if (this.form.valid) {
       this.authPvdr.loginAnonymously().then(uid => {
-        this.ticketPvdr.claimTicket(uid, lastName, ticketId)
-          .then(data => {
-            this.navCtrl.push(TabsPage);
+        this.ticketPvdr.claimTicket(uid, lastName, ticketId).then(data => {
+            this.ticketPvdr.connecttoTicket(uid, lastName, ticketId).then(data => {
+              this.navCtrl.push(TabsPage);
+            });
           }).catch(err => alert(err.message));
       }).catch(err => alert(err.message));
     } else {

@@ -27,7 +27,7 @@ export class TicketsProvider {
     console.log('claiming');
     return new Promise((resolve, reject) => {
       this.dbpvdr.getObject('tickets/' + ticketId).valueChanges().subscribe(data => {
-        console.log('d',data);
+        console.log('d', data);
         if (data) {
           resolve(data);
         }
@@ -36,12 +36,16 @@ export class TicketsProvider {
     })
   }
 
+  public connecttoTicket(uid: string, lastName: string, ticketId: string) {
+    return this.dbpvdr.getObject('tickets/' + ticketId).update({person: {id: ticketId, lastName: lastName}})
+  }
+
   public getTickets() {
     return this.dbpvdr.getList('tickets').valueChanges();
   }
 
   public uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
