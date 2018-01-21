@@ -14,6 +14,7 @@ import {AngularFireModule} from "angularfire2";
 import { AuthProvider } from '../providers/auth/auth';
 import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
 import { DatabaseProvider } from '../providers/database/database';
+import { TicketsProvider } from '../providers/tickets/tickets';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DatabaseProvider } from '../providers/database/database';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     AngularFireAuth,
-    DatabaseProvider
+    DatabaseProvider,
+    TicketsProvider
   ]
 })
 export class AppModule {
